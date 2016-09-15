@@ -5,6 +5,8 @@ buildscript {
 }
 plugins {
   id 'org.roboscratch.robot' version '0.1.1'
+  compile 'org.robotframework:swinglibrary:1.9.6'
+
 }
 apply plugin: 'java'
 apply plugin: 'jacoco'

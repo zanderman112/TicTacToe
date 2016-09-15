@@ -44,19 +44,7 @@ public class TicTacToeTest {
 	@Test
 	public void testGameIsNotOverAfterTheFirstMark() {
 		model.makeMark("X", 0, 0);
-		int markCounter = 0;
-		int emptyCounter = 9;
-		for(int i = 1; i < 3; i++) {
-			for(int j = 1; j < 3; j++) {
-				if(!model.getMark(i, j).equals("")){
-					markCounter++;
-					emptyCounter--;
-				}
-				
-				if(emptyCounter == 8)
-					assertTrue(true);
-			}
-		}
+		assertEquals(false, model.checkIsGameOver());
 	}
 	
 	@Test
@@ -65,25 +53,17 @@ public class TicTacToeTest {
 		for(int i = 0; i < 3; i++){
 			model.makeMark("X", 0, i);
 		}
-		
-		if(model.getMark(0, 0).equals("X") && model.getMark(0, 1).equals("X") 
-		&& model.getMark(0, 2).equals("X")){
-			assertTrue(true);
-		}else
-			assertTrue(false);
+		assertEquals(true, model.checkGameStatus());
 	}
 	
 	@Test
 	public void testGameIsOverByTieIfAllLocationsAreFilled() {
-		int counter = 0;
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
 				model.makeMark("X", i, j);
-				counter++;
 			}
 		}
-		if(counter == 9)
-			assertTrue(true);
+		assertEquals(true, model.checkGameStatus());
 	}	
 	
 }
